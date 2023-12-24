@@ -33,8 +33,11 @@ public class Customer {
     private Double salary;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id") // aşağıda Address dediğimiz için onun primary key'ini alıyor (idsi). biz bu satırda column'un adını belirliyoruz
+    @JoinColumn(name = "address_id")
     private Address address;
+    // one olan hangisiyse onu primary key'i many olan tarafa foreign key olarak gider
+    // bu yüzden many olana (i.e. referansı one olana) JoinColumn denir, foreign key columnu için
+    // Address dediğimiz için onun primary key'ini alıyor (idsi). biz JoinColumn'la column'un adını belirliyoruz
 
     @OneToMany(cascade = {CascadeType.ALL},
             mappedBy = "customer")
